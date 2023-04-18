@@ -5,9 +5,9 @@ module.exports = [
     id: '1231',
     itemName: 'dog',
     amount: 10000,
-    date: '',
-    from: '',
-    category: '',
+    date: '1/2/22',
+    from: 'boss',
+    category: 'dog',
         
     }
 ]

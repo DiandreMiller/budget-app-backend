@@ -9,11 +9,6 @@ transactions.get('/', (request, response) => {
     console.log('transactionsArray',transactionsArray)
     response.json(transactionsArray)
 })
-// console.log('transactionsArray',transactionsArray)
-// transactions.get("/", (req, res) => {
-//     res.send(transactionsArray);
-//     console.log('test', transactionsArray)
-// });
 
 
 transactions.get('/:index', (request, response) => {
@@ -21,7 +16,7 @@ transactions.get('/:index', (request, response) => {
         response.json(transactionsArray[request.params.index]);
         response.send('test2')
     } else {
-      // res.status(404).json({ error: "Not Found" });
+      res.status(404).json({ error: "Not Found" });
       response.redirect("/budget");
     }
   });

@@ -16,9 +16,10 @@ transactions.get('/', (request, response) => {
 // });
 
 
-transactions.get('/:id', (request, response) => {
-    if (transactionsArray[request.params.id]) {
-      res.json(transactionsArray[request.params.id]);
+transactions.get('/:index', (request, response) => {
+    if (transactionsArray[request.params.index]) {
+        response.json(transactionsArray[request.params.index]);
+        response.send('test2')
     } else {
       // res.status(404).json({ error: "Not Found" });
       response.redirect("/budget");
@@ -30,20 +31,20 @@ transactions.post('/', (request, response) => {
     response.json(transactions[transactionsArray.length-1])
 })
 
-transactions.put('/:id', transActionValidator, (request, response) => {
-    const { id } = request.params;
-    if (transactionsArray[id]) {
-        transactionsArray[id] = request.body
-        response.status(200).json(transactionsArray[id])
+transactions.put('/:index', transActionValidator, (request, response) => {
+    const { index } = request.params;
+    if (transactionsArray[index]) {
+        transactionsArray[index] = request.body
+        response.status(200).json(transactionsArray[index])
     } else {
         response.status(404).json({error: 'Not Found'})
     }
 })
 
-transactions.delete('/:id', transActionValidator, (request, response) => {
-    const { id } = request.params;
-    if (transactionsArray[id]) {
-        const deleteTransAction = transactionsArray.splice(id)
+transactions.delete('/:index', (request, response) => {
+    const { index } = request.params;
+    if (transactionsArray[index]) {
+        const deleteTransAction = transactionsArray.splice(index,1)
         response.status(200).json(deleteTransAction)
     } else {
         response.status(400).json({error: 'An error has occurred'})
